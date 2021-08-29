@@ -3,6 +3,11 @@ var database;
 var gameState = 2;
 var subtract;
 var decrease;
+var QR;
+
+function preload() {
+  QRImg = loadImage("QRImage.png");
+}
 
 function setup() {
 
@@ -11,6 +16,10 @@ function setup() {
   createCanvas(displayWidth, displayHeight/2);
 
   balance = getBalance();
+  QR = createSprite(displayWidth/6*5, displayHeight/12, 50, 50);
+  QR.addImage(QRImg);
+  QRImg.resize(displayWidth/10, displayWidth/10);
+
 
   enter50 = createButton('50p');
   enter50.size(displayWidth/6, displayHeight/6);
@@ -104,6 +113,8 @@ function draw() {
   textSize(40);
   fill("orange");
   text("Balance: £" + balance, displayWidth/2-150, 100);
+
+  drawSprites();
 }  
 
 function increase1() {
