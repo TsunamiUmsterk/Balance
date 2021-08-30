@@ -5,6 +5,7 @@ var subtract;
 var decrease;
 var QR;
 var i = 21;
+var clr, clrc;
 
 function preload() {
   QRImg = loadImage("QRImage.png");
@@ -21,6 +22,15 @@ function setup() {
   QR.addImage(QRImg);
   QRImg.resize(displayWidth/11, displayWidth/11);
 
+  
+  clrc = "red";
+
+  clrl = createButton('Change color');
+  clrl.size(displayWidth/12, displayHeight/12);
+  clrl.position(displayWidth/12*11, displayHeight/12);
+  clrl.style("font-size","20px");
+  clrl.style("background-color","#ffffff");
+  clrl.mousePressed(changeColor);
 
   enter50 = createButton('50p');
   enter50.size(displayWidth/6, displayHeight/6);
@@ -114,8 +124,7 @@ function draw() {
   textSize(40);
   textAlign(CENTER, CENTER);
   textFont('Apple Chauncey');
-  fill("orange");
-  fill(252, 161, 3, i);
+  fill(clrc);
   text("Balance: £" + balance, displayWidth/2, displayHeight/12);
 
  if(frameCount%10 === 0) {
@@ -189,4 +198,24 @@ function updateBalance(value) {
     database.ref("/").update({
        balance : balance + value
   });
+}
+
+function changeColor() {
+  clr = Math.round(random(1, 6));
+
+  if(clr === 1) {
+    clrc = "red";
+  } else if(clr === 2) {
+    clrc = "orange";
+  } else if(clr === 3) {
+    clrc = "#fff700";
+  } else if(clr === 4) {
+    clrc = "green";
+  } else if(clr === 5) {
+    clrc = "blue";
+  } else if(clr === 6) {
+    clrc = "indigo";
+  } else if(clr === 7) {
+    clrc = "violet";
+  }
 }
