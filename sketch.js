@@ -4,6 +4,7 @@ var gameState = 2;
 var subtract;
 var decrease;
 var QR;
+var i = 21;
 
 function preload() {
   QRImg = loadImage("QRImage.png");
@@ -18,7 +19,7 @@ function setup() {
   balance = getBalance();
   QR = createSprite(displayWidth/6*5, displayHeight/12, 50, 50);
   QR.addImage(QRImg);
-  QRImg.resize(displayWidth/10, displayWidth/10);
+  QRImg.resize(displayWidth/11, displayWidth/11);
 
 
   enter50 = createButton('50p');
@@ -111,8 +112,20 @@ function draw() {
   background(250);  
 
   textSize(40);
+  textAlign(CENTER, CENTER);
+  textFont('Apple Chauncey');
   fill("orange");
-  text("Balance: £" + balance, displayWidth/2-150, 100);
+  fill(252, 161, 3, i);
+  text("Balance: £" + balance, displayWidth/2, displayHeight/12);
+
+ if(frameCount%10 === 0) {
+   i += 1;
+ }
+
+ if(i === 200) {
+   i = 21
+ }
+  
 
   drawSprites();
 }  
