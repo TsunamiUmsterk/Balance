@@ -15,7 +15,7 @@ function setup() {
 
   database = firebase.database();
 
-  createCanvas(Width, Height);
+  createCanvas(Width, Height/2);
 
   balance = getBalance();
   QR = createSprite(displayWidth/6*5, displayHeight/12, 50, 50);
